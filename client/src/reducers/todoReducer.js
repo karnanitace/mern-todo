@@ -5,11 +5,14 @@ import {
   CLEAR_CURRENT,
   GET_TODO,
   UPDATE_TODO,
+  TODO_ERROR,
+  CLEAR_TODO,
 } from "../actions/types";
 
 const initialState = {
   todos: [],
   current: null,
+  error: null,
 };
 
 export default (state = initialState, action) => {
@@ -17,16 +20,24 @@ export default (state = initialState, action) => {
     case GET_TODO:
       return {
         ...state,
+        todos: action.payload,
       };
     case ADD_TODO:
       return {
         ...state,
-        todos: [action.data, ...state.todos],
+        todos: [action.payload, ...state.todos],
       };
     case DELETE_TODO:
       return {
         ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.data),
+        todos: state.todos.filter((todo) => todo._id !== action.payload),
+      };
+    case CLEAR_TODO:
+      return {
+        ...state,
+        todos: [],
+        current: null,
+        error: null,
       };
     case SET_CURRENT:
       return {
@@ -42,8 +53,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         todos: state.todos.map((todo) =>
-          todo.id === action.data.id ? action.data : todo
+          todo._id === action.payload._id ? action.payload : todo
         ),
+      };
+    case TODO_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

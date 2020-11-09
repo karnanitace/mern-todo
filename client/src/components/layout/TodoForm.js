@@ -10,7 +10,7 @@ const TodoForm = ({ todo, addTodo, updateTodo, clearCurrent }) => {
 
   useEffect(() => {
     if (current !== null) {
-      setInput(current.text);
+      setInput(current.name);
     } else {
       setInput("");
     }
@@ -20,13 +20,12 @@ const TodoForm = ({ todo, addTodo, updateTodo, clearCurrent }) => {
     e.preventDefault();
     if (current === null) {
       addTodo({
-        id: uuid(),
-        text: input,
+        name: input,
       });
     } else {
       updateTodo({
-        id: current.id,
-        text: input,
+        _id: current._id,
+        name: input,
       });
     }
 

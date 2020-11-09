@@ -16,20 +16,21 @@ const Todo = ({ todo, getTodo, deleteTodo, setCurrent, clearCurrent }) => {
 
   useEffect(() => {
     getTodo();
-  }, [todos]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="todo-lists">
       <TransitionGroup>
         {todos.map((item) => (
-          <CSSTransition key={item.id} timeout={500} className="item">
+          <CSSTransition key={item._id} timeout={500} className="item">
             <li className="list">
-              {item.text}
+              {item.name}
               <span>
                 <DeleteForeverIcon
                   className="delete-icon"
                   onClick={() => {
-                    deleteTodo(item.id);
+                    deleteTodo(item._id);
                     clearCurrent();
                   }}
                 />

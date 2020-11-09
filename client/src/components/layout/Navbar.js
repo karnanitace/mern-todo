@@ -6,12 +6,14 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import { connect } from "react-redux";
 import { logout } from "../../actions/authAction";
+import { clearItems } from "../../actions/todoAction";
 
-const Navbar = ({ title, auth, logout }) => {
+const Navbar = ({ title, auth, logout, clearItems }) => {
   const { isAuthenticated, user } = auth;
 
   const onLogout = () => {
     logout();
+    clearItems();
   };
 
   const authLink = (
@@ -56,6 +58,7 @@ Navbar.defaultProps = {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  todo: state.todo,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout, clearItems })(Navbar);
