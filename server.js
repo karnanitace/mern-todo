@@ -10,6 +10,11 @@ connectDB();
 // init middleware
 app.use(express.json({ extended: false }));
 
+//  Define Routes
+app.use("/api/users", require("./routes/users"));
+app.use("/api/todo", require("./routes/todo"));
+app.use("/api/auth", require("./routes/auth"));
+
 //  Server Static assets in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
@@ -19,11 +24,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
   );
 }
-
-//  Define Routes
-app.use("/api/users", require("./routes/users"));
-app.use("/api/todo", require("./routes/todo"));
-app.use("/api/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 5000;
 
