@@ -1,22 +1,47 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-const Navbar = ({ title }) => {
+import { connect } from "react-redux";
+import { logout } from "../../actions/authAction";
+
+const Navbar = ({ title, auth, logout }) => {
+  const { isAuthenticated, user } = auth;
+
+  const onLogout = () => {
+    logout();
+  };
+
+  const authLink = (
+    <Fragment>
+      <li>Hello {user && user.name} </li>
+      <li>
+        <a href="#!" onClick={onLogout}>
+          <ExitToAppIcon />
+        </a>
+      </li>
+    </Fragment>
+  );
+
+  const guestLink = (
+    <Fragment>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+      <li>
+        <Link to="/register">Register</Link>
+      </li>
+    </Fragment>
+  );
+
   return (
     <div className="navbar bg-primary">
       <h1>
         <AssignmentIcon className="todo-icon" /> {title}
       </h1>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
+      <ul>{isAuthenticated ? authLink : guestLink}</ul>
     </div>
   );
 };
@@ -29,4 +54,8 @@ Navbar.defaultProps = {
   title: "Todo List",
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

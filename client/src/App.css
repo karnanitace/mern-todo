@@ -21,9 +21,8 @@ body {
   line-height: 1.6;
   background: linear-gradient(to right, #ee0979, #ff6a00);
 }
-
 .container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 a {
@@ -86,6 +85,17 @@ img {
   margin: 3rem 0;
 }
 
+.bg-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+.bg-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+.text-primary {
+  color: var(--primary-color);
+}
 /* Navbar */
 .navbar {
   padding: 0 40px;
@@ -107,14 +117,7 @@ img {
   transform: scale(1.4);
   margin-right: 10px;
 }
-.bg-primary {
-  background: var(--primary-color);
-  color: #fff;
-}
-.bg-dark {
-  background: var(--dark-color);
-  color: #fff;
-}
+
 .todo {
   display: flex;
   justify-content: center;
@@ -225,4 +228,100 @@ img {
 .exit-active {
   opacity: 0;
   transition: opacity 500ms ease-in;
+}
+
+/* Login Register forms */
+.log-reg-forms {
+  display: flex;
+  min-height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background: #f4f4f4;
+  padding: 20px 35px;
+  width: 500px;
+  box-shadow: 6px 10px 12px 0px #333;
+}
+
+input {
+  margin: 1.2rem 0;
+}
+
+.form-text {
+  display: block;
+  margin-top: 0.3rem;
+  color: #888;
+}
+
+.log-input[type="text"],
+.log-input[type="email"],
+.log-input[type="password"],
+.log-input[type="date"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"],
+button {
+  font: inherit;
+}
+
+.form-group {
+  margin: 1.2rem 0;
+}
+
+.form-group input {
+  margin: 0.2rem 0;
+}
+
+.form-container h1,
+h2,
+h3 {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+}
+.btn-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* Alert */
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+  display: flex;
+}
+
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+.info-icon {
+  margin-right: 10px;
 }
