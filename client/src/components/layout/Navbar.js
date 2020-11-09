@@ -35,6 +35,9 @@ const Navbar = ({ title, auth, logout, clearItems }) => {
       <li>
         <Link to="/register">Register</Link>
       </li>
+      <li>
+        <Link to="/about">About</Link>
+      </li>
     </Fragment>
   );
 

@@ -102,6 +102,7 @@ img {
   justify-content: space-between;
   display: flex;
   height: 80px;
+
   align-items: center;
 }
 
@@ -324,4 +325,19 @@ h3 {
 }
 .info-icon {
   margin-right: 10px;
+}
+
+/* Media Query */
+@media (max-width: 420px) {
+  .navbar {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .navbar h1 {
+    font-size: 20px;
+  }
+  .todo-icon {
+    margin-top: 10px;
+    transform: scale(1.1);
+  }
 }
