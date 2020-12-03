@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://karnanitace16:karna1609@todoapp.vg9ww.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "mongoURI": "(Add your mongoDb URI)",
   "jwtSecret": "secret"
 }
